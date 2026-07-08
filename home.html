@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口喷写作实践小组 · 课程目录</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('stw-theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+<link rel="stylesheet" href="theme.css">
+<style>
+  :root {
+    --bg: #0e0c09;
+    --bg2: #161410;
+    --bg3: #1e1a14;
+    --ink: #f5f0e8;
+    --accent: #c85a1e;
+    --gold: #b8960c;
+    --muted: #6a6258;
+    --border: rgba(245,240,232,0.08);
+    --serif: 'Noto Serif SC', serif;
+    --mono: 'Space Mono', monospace;
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--serif); line-height: 1.7;
+    padding-top: 52px;
+  }
+  body::before {
+    content:''; position:fixed; inset:0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events:none; z-index:0;
+  }
+  .progress-bar { position:fixed; top:0; left:0; height:2px; background:var(--accent); z-index:1001; transition:width 0.1s; width:0; }
+
+  /* TOP BAR */
+  #top-bar {
+    position:fixed; top:0; left:0; right:0; height:52px; z-index:1000;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(14,12,9,0.92); backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--border);
+  }
+  #top-bar-inner { width:100%; max-width:960px; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; }
+  #top-title { display:flex; flex-direction:column; gap:1px; }
+  #top-title .zh { font-size:0.82rem; font-weight:900; color:var(--ink); letter-spacing:0.05em; }
+  #top-title .en { font-family:var(--mono); font-size:0.5rem; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; }
+
+  /* HERO */
+  .hero {
+    min-height:calc(92vh - 52px);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:5rem 2rem 4rem; position:relative; overflow:hidden;
+    border-bottom:1px solid var(--border);
+  }
+  .hero::after {
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background-image:
+      radial-gradient(1px 1px at 15% 20%, rgba(245,240,232,0.35) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 8%, rgba(245,240,232,0.2) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 45% 55%, rgba(200,90,30,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 40%, rgba(245,240,232,0.25) 0%, transparent 100%),
+      radial-gradient(1px 1px at 30% 78%, rgba(245,240,232,0.15) 0%, transparent 100%),
+      radial-gradient(1px 1px at 60% 90%, rgba(184,150,12,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 10% 60%, rgba(245,240,232,0.2) 0%, transparent 100%),
+      radial-gradient(1px 1px at 95% 70%, rgba(245,240,232,0.3) 0%, transparent 100%);
+  }
+  .hero-inner { max-width:960px; margin:0 auto; width:100%; position:relative; z-index:1; }
+  .hero-eyebrow {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.3em;
+    color:var(--accent); text-transform:uppercase; margin-bottom:2rem;
+    display:flex; align-items:center; gap:0.8rem;
+  }
+  .hero-eyebrow::before { content:''; display:block; width:32px; height:1px; background:var(--accent); }
+  .hero-title {
+    font-size:clamp(2.2rem, 6vw, 4.6rem);
+    font-weight:900; line-height:1.06;
+    letter-spacing:-0.02em; margin-bottom:1.4rem;
+  }
+  .hero-title .en-title {
+    display:block; font-family:var(--mono);
+    font-size:clamp(0.85rem, 1.8vw, 1.1rem);
+    font-weight:700; color:var(--muted);
+    letter-spacing:0.08em; margin-bottom:0.6rem;
+  }
+  .hero-title .accent { color:var(--accent); }
+  .hero-sub {
+    font-size:1.05rem; color:rgba(245,240,232,0.5);
+    font-weight:300; max-width:560px;
+    margin-bottom:3rem; line-height:1.95;
+  }
+  .hero-sub strong { color:var(--ink); font-weight:700; }
+  .hero-meta {
+    display:flex; gap:0; flex-wrap:wrap;
+    border:1px solid var(--border); margin-bottom:3rem; max-width:560px;
+  }
+  .hero-meta-item { flex:1; min-width:120px; padding:0.9rem 1.3rem; border-right:1px solid var(--border); }
+  .hero-meta-item:last-child { border-right:none; }
+  .meta-label { font-family:var(--mono); font-size:0.52rem; letter-spacing:0.2em; color:var(--muted); margin-bottom:0.3rem; text-transform:uppercase; }
+  .meta-val { font-size:0.92rem; font-weight:700; color:var(--ink); }
+  .hero-cta { display:flex; flex-direction:column; gap:1rem; align-items:flex-start; }
+  .btn-primary {
+    display:inline-block; padding:0.95rem 2.5rem;
+    background:var(--accent); color:var(--ink);
+    font-family:var(--serif); font-size:0.95rem; font-weight:700; letter-spacing:0.12em;
+    cursor:pointer; transition:all 0.2s; text-decoration:none; border:none;
+  }
+  html[data-theme="light"] .btn-primary { color:#fff8ed; }
+  .btn-primary:hover { background:var(--ink); color:var(--bg); transform:translateY(-2px); box-shadow:4px 4px 0 var(--accent); }
+  .hero-or { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.15em; color:rgba(245,240,232,0.22); cursor:pointer; }
+  .hero-or:hover { color:var(--muted); }
+  html[data-theme="light"] .hero-or { color:rgba(26,21,16,0.3); }
+
+  /* SECTION COMMONS */
+  .section { padding:5rem 2rem; border-bottom:1px solid var(--border); }
+  .section.alt { background:var(--bg2); }
+  .section.alt2 { background:var(--bg3); }
+  .section-inner { max-width:960px; margin:0 auto; }
+  .section-eyebrow {
+    font-family:var(--mono); font-size:0.6rem; letter-spacing:0.3em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:0.8rem;
+  }
+  .section-title {
+    font-size:clamp(1.6rem, 3.5vw, 2.4rem);
+    font-weight:900; line-height:1.15; margin-bottom:2rem;
+  }
+  .section-title em { color:var(--accent); font-style:normal; }
+  .section-lead {
+    font-size:1rem; color:rgba(245,240,232,0.5);
+    font-weight:300; line-height:1.95; max-width:640px;
+    margin-bottom:2.5rem;
+  }
+  .section-lead strong { color:var(--ink); font-weight:700; }
+
+  /* WELCOME CARD */
+  .welcome-card {
+    display:block; text-decoration:none; color:inherit;
+    border:1px solid var(--accent); padding:2rem 2rem 1.8rem;
+    margin-top:2rem; position:relative; overflow:hidden;
+    background:linear-gradient(135deg, rgba(200,90,30,0.06), rgba(184,150,12,0.04));
+    transition:background 0.2s;
+  }
+  .welcome-card:hover { background:linear-gradient(135deg, rgba(200,90,30,0.1), rgba(184,150,12,0.07)); }
+  .welcome-card-inner { display:flex; justify-content:space-between; align-items:center; gap:1.5rem; flex-wrap:wrap; }
+  .welcome-card-text .title { font-size:1.4rem; font-weight:900; line-height:1.3; margin-bottom:0.5rem; }
+  .welcome-card-text .sub { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--muted); margin-bottom:0.8rem; }
+  .welcome-card-text .desc { font-size:0.85rem; color:rgba(245,240,232,0.6); font-weight:300; line-height:1.85; max-width:560px; }
+  .welcome-card-cta { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--accent); white-space:nowrap; flex-shrink:0; }
+  html[data-theme="light"] .welcome-card { background:linear-gradient(135deg, rgba(176,74,21,0.07), rgba(184,150,12,0.04)); border-color:var(--accent); }
+  html[data-theme="light"] .welcome-card:hover { background:linear-gradient(135deg, rgba(176,74,21,0.12), rgba(184,150,12,0.08)); }
+  html[data-theme="light"] .welcome-card-text .title { color:var(--ink); }
+  html[data-theme="light"] .welcome-card-text .desc { color:rgba(26,21,16,0.65); }
+  .welcome-card.appendix { border-color:var(--gold); background:linear-gradient(135deg, rgba(184,150,12,0.06), rgba(184,150,12,0.02)); }
+  .welcome-card.appendix:hover { background:linear-gradient(135deg, rgba(184,150,12,0.1), rgba(184,150,12,0.05)); }
+  .welcome-card.appendix .welcome-card-cta { color:var(--gold); }
+  html[data-theme="light"] .welcome-card.appendix { border-color:var(--gold); background:linear-gradient(135deg, rgba(138,111,8,0.07), rgba(138,111,8,0.02)); }
+  html[data-theme="light"] .welcome-card.appendix:hover { background:linear-gradient(135deg, rgba(138,111,8,0.12), rgba(138,111,8,0.05)); }
+
+  /* DAILY GRID */
+  .lesson-grid {
+    display:grid; grid-template-columns:repeat(2, 1fr);
+    border:1px solid var(--border); margin-top:2rem;
+  }
+  .lesson-card {
+    padding:2rem 1.8rem;
+    border-right:1px solid var(--border);
+    border-bottom:1px solid var(--border);
+    text-decoration:none; color:inherit;
+    display:block; position:relative; overflow:hidden;
+    transition:background 0.2s;
+  }
+  .lesson-card:nth-child(2n) { border-right:none; }
+  .lesson-card:nth-last-child(-n+2) { border-bottom:none; }
+  .lesson-card.locked { opacity:0.45; cursor:default; }
+  .lesson-card:not(.locked):hover { background:rgba(245,240,232,0.03); }
+  html[data-theme="light"] .lesson-card:not(.locked):hover { background:rgba(255,253,247,0.7); }
+  .lesson-card .big-num {
+    position:absolute; right:1.2rem; top:0.6rem;
+    font-family:var(--mono); font-size:4.5rem; font-weight:700;
+    color:rgba(245,240,232,0.04); line-height:1; user-select:none;
+  }
+  html[data-theme="light"] .lesson-card .big-num { color:rgba(26,21,16,0.05); }
+  .lesson-meta {
+    font-family:var(--mono); font-size:0.55rem; letter-spacing:0.2em;
+    color:var(--accent); margin-bottom:1rem;
+    display:flex; align-items:center; gap:0.6rem;
+  }
+  .lesson-meta .tag {
+    color:var(--muted); border:1px solid var(--border);
+    padding:0.15rem 0.5rem; border-radius:2px;
+  }
+  .lesson-card.gold .lesson-meta { color:var(--gold); }
+  .lesson-title { font-size:1.2rem; font-weight:900; line-height:1.35; margin-bottom:0.6rem; }
+  html[data-theme="light"] .lesson-title { color:var(--ink); }
+  .lesson-desc {
+    font-size:0.82rem; color:rgba(245,240,232,0.5);
+    font-weight:300; line-height:1.85;
+  }
+  html[data-theme="light"] .lesson-desc { color:rgba(26,21,16,0.66); }
+  .lesson-go {
+    margin-top:1rem; font-family:var(--mono);
+    font-size:0.58rem; letter-spacing:0.15em; color:var(--accent);
+  }
+  .lesson-card.locked .lesson-go { color:var(--muted); }
+
+  /* FOOTER */
+  .footer { padding:3rem 2rem; background:var(--bg); display:flex; justify-content:center; }
+  .footer-inner { max-width:960px; width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-left { font-size:0.85rem; font-weight:700; color:rgba(245,240,232,0.3); }
+  .footer-right { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.15em; color:var(--muted); }
+
+  @media (max-width: 720px) {
+    .lesson-grid { grid-template-columns:1fr; }
+    .lesson-card { border-right:none; }
+    .lesson-card:nth-child(2n) { border-right:none; }
+    .lesson-card:nth-last-child(-n+2) { border-bottom:1px solid var(--border); }
+    .lesson-card:last-child { border-bottom:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div id="top-bar">
+  <div id="top-bar-inner">
+    <div id="top-title">
+      <span class="zh">口喷写作实践小组</span>
+      <span class="en">Speak to Write · 33 Days</span>
+    </div>
+    <div style="display:flex; gap:0.5rem; align-items:center;">
+      <button class="theme-toggle" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Speak to Write · 实践小组 · 7.7 – 8.8</div>
+    <h1 class="hero-title">
+      <span class="en-title">Speak to Write · Study Yourself</span>
+      用轻松的<span class="accent">口喷写作</span><br>来研究自己
+    </h1>
+    <p class="hero-sub">
+      每天15分钟，说话就算写作。<br>
+      废话合法，废话尤其算数。<br>
+      <strong>33天后，你拥有3万字以上、独属于你的「自我研究原始语料」。</strong>
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="meta-label">Duration</div>
+        <div class="meta-val">33 天</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Daily</div>
+        <div class="meta-val">口述 15-30 分钟</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Reward</div>
+        <div class="meta-val">打卡17天返奖学金</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a class="btn-primary" href="stw-00.html">先 读 欢 迎 信 →</a>
+      <span class="hero-or" onclick="document.getElementById('lessons').scrollIntoView({behavior:'smooth'})">或，先看目录 ↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- LESSONS / TOC -->
+<section class="section" id="lessons">
+  <div class="section-inner">
+    <div class="section-eyebrow">Contents · 目录</div>
+    <div class="section-title">今天读完欢迎信，<em>明天开始说</em></div>
+    <p class="section-lead">
+      今天（D0）的任务：读完欢迎信，做三件小事。<strong>明天早上你会收到第一条口喷指引，打卡从明天正式开始计算。</strong>
+    </p>
+
+    <a class="welcome-card" href="stw-00.html">
+      <div class="welcome-card-inner">
+        <div class="welcome-card-text">
+          <div class="title">👏 欢迎信｜用轻松的口喷写作来研究自己</div>
+          <div class="sub">D0 · 7月6日 · WELCOME LETTER</div>
+          <div class="desc">四条核心原则、工具准备、今天的作业（绑定触发场景）、打卡与奖学金规则，以及文末的「AI 指引者提示词」。</div>
+        </div>
+        <div class="welcome-card-cta">阅读欢迎信 →</div>
+      </div>
+    </a>
+
+    <div class="section-eyebrow" style="margin-top:4rem;">Daily · 每日引子 · 每天早上更新</div>
+    <div class="lesson-grid">
+
+      <a class="lesson-card locked gold">
+        <div class="big-num">15</div>
+        <div class="lesson-meta">DAY 15 · 7月21日 <span class="tag">里程碑</span></div>
+        <div class="lesson-title">回听日</div>
+        <div class="lesson-desc">前两周不回听、不修改。到这一天，我们第一次正式回头看——你会看到意想不到的东西。</div>
+        <div class="lesson-go">待解锁</div>
+      </a>
+
+      <a class="lesson-card locked gold">
+        <div class="big-num">20</div>
+        <div class="lesson-meta">DAY 20 · 7月26日 <span class="tag">里程碑</span></div>
+        <div class="lesson-title">AI 全量分析提示词</div>
+        <div class="lesson-desc">把前20天的文字一次性喂给AI，你会看到一份关于自己的完整分析。</div>
+        <div class="lesson-go">待解锁</div>
+      </a>
+
+      <a class="lesson-card locked">
+        <div class="big-num">33</div>
+        <div class="lesson-meta">DAY 33 · 8月8日 <span class="tag">结营</span></div>
+        <div class="lesson-title">收尾信 · 结营结算</div>
+        <div class="lesson-desc">返还打卡奖学金 / 预售金，以及：你现在拥有什么，接下来怎么继续。</div>
+        <div class="lesson-go">待解锁</div>
+      </a>
+
+    </div>
+
+    <div class="section-eyebrow" style="margin-top:4rem;">Appendix · 附录 · 持续更新</div>
+    <a class="welcome-card appendix" href="prompts.html">
+      <div class="welcome-card-inner">
+        <div class="welcome-card-text">
+          <div class="title">🗂 AI 分析卡｜口喷完，复制这张卡喂给 AI</div>
+          <div class="sub">PROMPT CARDS · 少即是多</div>
+          <div class="desc">现在只有一张卡：指引者。这一周就用这一张，不用挑。新的卡到该用的那天，才会出现在这一页。</div>
+        </div>
+        <div class="welcome-card-cta">打开分析卡 →</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- CLOSING -->
+<section class="section alt2">
+  <div class="section-inner" style="max-width:720px;">
+    <div class="section-eyebrow">Closing · 一句话记住这个挑战</div>
+    <div class="section-title" style="text-align:center;">
+      不存在「说得不好」<span style="color:var(--gold);">，</span>只存在<em>「说了」</em>和「没说」
+    </div>
+    <p class="section-lead" style="margin:0 auto; text-align:center;">
+      在 AI 时代，信息唾手可得，但最底层、最永恒的核心依然重要：<strong>了解你自己。</strong>
+    </p>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">说出来的每一句话，都算数。</div>
+    <div class="footer-right">© Speak to Write · by 云不见</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (window.scrollY / total * 100) + '%';
+});
+
+// 目录自动索引：Day 1 = 2026-07-07，每日页面命名 stw-01.html … stw-33.html。
+// 从 Day 1 起逐天探测，把所有已发布的日子全部列进目录（最新在前）；
+// 向前多探一天，头天晚上提前发布的"明日卡"也能立刻出现。
+// 标题缓存在 localStorage，回访时只需探测新增的日子。
+(async function() {
+  const START = new Date(2026, 6, 7);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  let n = Math.floor((today - START) / 864e5) + 1;
+  n = Math.max(1, Math.min(n, 33));
+  const maxProbe = Math.min(n + 1, 33);
+  const page = d => 'stw-' + String(d).padStart(2, '0') + '.html';
+  let cache = {};
+  try { cache = JSON.parse(localStorage.getItem('stw-card-titles') || '{}'); } catch (e) {}
+  const days = [];
+  for (let d = 1; d <= maxProbe; d++) {
+    if (cache[d]) { days.push({ d: d, title: cache[d] }); continue; }
+    try {
+      const r = await fetch(page(d));
+      if (!r.ok) break;
+      const html = await r.text();
+      const m = html.match(/<span class="zh">[^<｜]*｜([^<]+)<\/span>/);
+      const title = m ? m[1].trim() : '第' + d + '条口喷指引';
+      cache[d] = title;
+      days.push({ d: d, title: title });
+    } catch (e) { break; }
+  }
+  try { localStorage.setItem('stw-card-titles', JSON.stringify(cache)); } catch (e) {}
+  const grid = document.querySelector('.lesson-grid');
+  if (!grid || !days.length) return;
+  // 去重按解析后的路径比较（托管平台可能把 stw-01.html 改写成 /stw-01）
+  const existing = [...grid.querySelectorAll('a[href]')].map(a =>
+    new URL(a.href, location.href).pathname.replace(/\.html$/, ''));
+  const latest = days[days.length - 1].d;
+  // 升序逐张 prepend，最终最新的一天排在最前
+  days.forEach(item => {
+    const target = page(item.d).replace(/\.html$/, '');
+    if (existing.some(p => p.endsWith('/' + target))) return;
+    const a = document.createElement('a');
+    const isLatest = item.d === latest;
+    a.className = isLatest ? 'lesson-card gold' : 'lesson-card';
+    a.href = page(item.d);
+    const date = new Date(START.getTime() + (item.d - 1) * 864e5);
+    const tag = isLatest ? ' <span class="tag">' + (item.d === n ? '今日' : item.d > n ? '明日' : '最新') + '</span>' : '';
+    a.innerHTML = '<div class="big-num">' + String(item.d).padStart(2, '0') + '</div>'
+      + '<div class="lesson-meta">DAY ' + item.d + ' · ' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + tag + '</div>'
+      + '<div class="lesson-title">' + item.title + '</div>'
+      + '<div class="lesson-go">阅读 Day ' + item.d + ' →</div>';
+    grid.prepend(a);
+  });
+})();
+</script>
+<script src="theme.js" defer></script>
+
+</body>
+</html>

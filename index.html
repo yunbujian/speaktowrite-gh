@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>口喷写作实践小组 · Speak to Write</title>
+<script>(function(){try{var t=localStorage.getItem('stw-theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+<style>
+  :root { --bg:#0e0c09; --ink:#f5f0e8; --muted:#6a6258; --gold:#b8960c; }
+  html[data-theme="light"] { --bg:#faf5ec; --ink:#1a1510; --muted:#8a8172; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--bg); color:var(--ink); font-family:'Noto Serif SC',serif; min-height:100vh; display:flex; align-items:center; justify-content:center; }
+  .wait { text-align:center; padding:2rem; }
+  .wait .dot { color:var(--gold); }
+  .wait p { font-size:0.9rem; color:var(--muted); letter-spacing:0.1em; }
+  .wait a { color:var(--gold); }
+</style>
+</head>
+<body>
+<div class="wait">
+  <p id="msg">正在打开今天的引子<span class="dot">…</span></p>
+</div>
+<script>
+// 根地址自动索引到当天课程页：Day 1 = 2026-07-07，页面命名 stw-01.html … stw-33.html。
+// 从"今天应该是 Day 几"往前探测，跳转到最新已发布的一天；一天都没有则去首页 home.html。
+(async function() {
+  const START = new Date(2026, 6, 7);
+  const today = new Date(); today.setHours(0, 0, 0, 0);
+  let n = Math.floor((today - START) / 864e5) + 1;
+  n = Math.max(1, Math.min(n, 33));
+  const page = d => 'stw-' + String(d).padStart(2, '0') + '.html';
+  for (let d = n; d >= 1; d--) {
+    try {
+      const r = await fetch(page(d), { method: 'HEAD' });
+      if (r.ok) { location.replace(page(d)); return; }
+    } catch (e) {}
+  }
+  location.replace('home.html');
+})();
+</script>
+<noscript><p style="text-align:center;">请前往 <a href="home.html">首页</a></p></noscript>
+</body>
+</html>
