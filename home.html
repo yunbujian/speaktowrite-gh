@@ -276,9 +276,9 @@
 <section class="section" id="lessons">
   <div class="section-inner">
     <div class="section-eyebrow">Contents · 目录</div>
-    <div class="section-title">今天读完欢迎信，<em>明天开始说</em></div>
+    <div class="section-title">从欢迎信开始，<em>跟上每天的引子</em></div>
     <p class="section-lead">
-      今天（D0）的任务：读完欢迎信，做三件小事。<strong>明天早上你会收到第一条口喷指引，打卡从明天正式开始计算。</strong>
+      还没加入的，先读欢迎信、绑定你的触发场景。<strong>已经在路上的，直接跳到下面最新一天的引子。</strong>
     </p>
 
     <a class="welcome-card" href="stw-00.html">
@@ -370,7 +370,7 @@ window.addEventListener('scroll', () => {
   const today = new Date(); today.setHours(0, 0, 0, 0);
   let n = Math.floor((today - START) / 864e5) + 1;
   n = Math.max(1, Math.min(n, 33));
-  const maxProbe = Math.min(n + 1, 33);
+  const maxProbe = n;
   const page = d => 'stw-' + String(d).padStart(2, '0') + '.html';
   let cache = {};
   try { cache = JSON.parse(localStorage.getItem('stw-card-titles') || '{}'); } catch (e) {}
