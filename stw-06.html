@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D6 即兴的智慧：随时开始 · 口喷写作实践小组</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('stw-theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+<link rel="stylesheet" href="theme.css">
+<style>
+  :root { --bg:#0e0c09; --bg2:#161410; --bg3:#1e1a14; --ink:#f5f0e8; --accent:#c85a1e; --gold:#b8960c; --muted:#6a6258; --border:rgba(245,240,232,0.08); --serif:'Noto Serif SC',serif; --mono:'Space Mono',monospace; }
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--serif); line-height:1.85; padding-top:52px; }
+  body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); }
+  .progress-bar { position:fixed; top:0; left:0; height:2px; background:var(--gold); z-index:1001; transition:width 0.1s; width:0; }
+  #top-bar { position:fixed; top:0; left:0; right:0; height:52px; z-index:1000; display:flex; align-items:center; justify-content:center; background:rgba(14,12,9,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+  #top-bar-inner { width:100%; max-width:840px; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  #top-title { display:flex; flex-direction:column; gap:1px; min-width:0; }
+  #top-title .zh { font-size:0.78rem; font-weight:900; color:var(--ink); letter-spacing:0.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #top-title .en { font-family:var(--mono); font-size:0.5rem; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; }
+  .top-nav { display:flex; gap:0.5rem; flex-shrink:0; align-items:center; }
+  .nav-btn { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.12em; color:var(--muted); text-decoration:none; border:1px solid rgba(245,240,232,0.1); padding:0.35rem 0.7rem; border-radius:3px; transition:all 0.2s; white-space:nowrap; }
+  .nav-btn:hover { color:var(--ink); border-color:rgba(245,240,232,0.3); }
+  .nav-btn.disabled { opacity:0.4; pointer-events:none; }
+  .footer-nav-card.disabled { opacity:0.45; pointer-events:none; }
+  .lesson-hero { padding:6rem 2rem 4rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+  .lesson-hero-inner { max-width:840px; margin:0 auto; position:relative; z-index:1; }
+  .lesson-hero::after { content:''; position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(1.5px 1.5px at 25% 30%, rgba(184,150,12,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 70% 60%, rgba(184,150,12,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 85% 25%, rgba(245,240,232,0.2) 0%, transparent 100%), radial-gradient(1.2px 1.2px at 45% 80%, rgba(245,240,232,0.25) 0%, transparent 100%); }
+  .lesson-number { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.8rem; }
+  .lesson-number::before { content:''; display:block; width:32px; height:1px; background:var(--gold); }
+  .lesson-hero h1 { font-size:clamp(2rem,5.2vw,3.4rem); font-weight:900; line-height:1.15; letter-spacing:-0.01em; margin-bottom:1.2rem; }
+  .lesson-hero .en-sub { font-family:var(--mono); font-size:clamp(0.78rem,1.5vw,0.95rem); font-weight:700; color:var(--muted); letter-spacing:0.08em; margin-bottom:1.6rem; }
+  .lesson-hero .lead { font-size:1.05rem; color:rgba(245,240,232,0.6); font-weight:300; line-height:1.95; max-width:580px; }
+  .lesson-hero .lead strong { color:var(--ink); font-weight:700; }
+  .lesson-hero .lead em { color:var(--gold); font-style:italic; }
+  .lesson-content { max-width:720px; margin:0 auto; padding:4rem 2rem; }
+  .lesson-content p { font-size:1rem; color:rgba(245,240,232,0.78); font-weight:300; line-height:1.95; margin-bottom:1.3rem; }
+  .lesson-content p strong { color:var(--ink); font-weight:700; }
+  .lesson-content p em { color:var(--gold); font-style:normal; font-weight:700; }
+  .lesson-content h2 { font-size:1.7rem; font-weight:900; line-height:1.25; margin:3.5rem 0 1.5rem; padding-top:2rem; border-top:1px solid var(--border); scroll-margin-top:70px; }
+  .lesson-content h3 { scroll-margin-top:70px; font-size:1.2rem; font-weight:900; line-height:1.35; margin:2.4rem 0 1rem; color:var(--ink); }
+  .lesson-content h2 .num { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.2em; color:var(--gold); display:block; margin-bottom:0.6rem; font-weight:700; text-transform:uppercase; }
+  .lesson-content ul, .lesson-content ol { margin:0 0 1.3rem 1.4rem; }
+  .lesson-content li { font-size:1rem; color:rgba(245,240,232,0.78); font-weight:300; line-height:1.95; margin-bottom:0.4rem; }
+  .lesson-content li strong { color:var(--ink); font-weight:700; }
+  .lesson-content a { color:var(--gold); text-underline-offset:0.2em; word-break:break-all; }
+  .lesson-content blockquote { margin:1.8rem 0; padding:1.2rem 1.5rem; border-left:3px solid var(--gold); background:rgba(184,150,12,0.05); font-size:0.95rem; color:rgba(245,240,232,0.7); font-weight:300; line-height:1.95; }
+  .lesson-content blockquote strong { color:var(--ink); font-weight:700; }
+  .lesson-content blockquote .bq-label { font-family:var(--mono); font-size:0.52rem; letter-spacing:0.22em; color:var(--gold); display:block; margin-bottom:0.6rem; text-transform:uppercase; font-weight:700; }
+  .lesson-content blockquote .bq-source { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; color:var(--muted); display:block; margin-top:0.8rem; }
+  .rules-box { padding:1.6rem 1.8rem; border:2px solid var(--gold); background:rgba(184,150,12,0.05); margin:2rem 0; font-family:var(--serif); font-size:1.05rem; font-weight:700; color:var(--ink); line-height:1.9; }
+  .rules-box .label { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.25em; color:var(--gold); margin-bottom:0.8rem; text-transform:uppercase; display:block; font-weight:700; }
+  .sign-off { margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border); }
+  .sign-off .by { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--muted); }
+  .lesson-footer-nav { max-width:840px; margin:0 auto; padding:3rem 2rem; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .footer-nav-card { padding:1.5rem 1.4rem; border:1px solid var(--border); text-decoration:none; color:inherit; transition:background 0.2s; }
+  .footer-nav-card:hover { background:rgba(245,240,232,0.03); }
+  .footer-nav-card.next { text-align:right; }
+  .fn-label { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.2em; color:var(--muted); margin-bottom:0.5rem; }
+  .fn-title { font-size:0.95rem; font-weight:900; color:var(--ink); line-height:1.35; }
+  .fn-num { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; color:var(--gold); margin-top:0.4rem; }
+  .footer { padding:2.5rem 2rem; background:var(--bg); display:flex; justify-content:center; border-top:1px solid var(--border); }
+  .footer-inner { max-width:840px; width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-left { font-size:0.82rem; font-weight:700; color:rgba(245,240,232,0.3); }
+  .footer-right { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.15em; color:var(--muted); }
+  @media (max-width: 640px) { #top-title { display:none; } #top-bar-inner { justify-content:flex-end; } .lesson-hero h1 { font-size:1.8rem; } .lesson-content { padding:3rem 1.4rem; } .lesson-footer-nav { grid-template-columns:1fr; padding:2rem 1.4rem; } .footer-nav-card.next { text-align:left; } }
+
+  /* ── Page TOC ── */
+  @media (min-width: 1240px) {
+    #page-toc {
+      position:fixed; z-index:500;
+      top:110px; left:calc(50% - 610px); width:210px;
+      max-height:calc(100vh - 170px); overflow-y:auto;
+      scrollbar-width:thin;
+      opacity:0; pointer-events:none; transform:translateY(8px);
+      transition:opacity 0.35s ease, transform 0.35s ease;
+    }
+    #page-toc.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+  }
+  @media (max-width: 1239.98px) {
+    #page-toc {
+      position:fixed; z-index:950;
+      top:0; bottom:0; left:-300px; width:272px;
+      padding:4.5rem 1.3rem 2.5rem;
+      background:var(--bg); border-right:1px solid var(--border);
+      overflow-y:auto; scrollbar-width:thin;
+      transition:left 0.28s ease;
+    }
+    #page-toc.open { left:0; box-shadow:6px 0 28px rgba(0,0,0,0.35); }
+  }
+  #page-toc .toc-label {
+    font-family:var(--mono); font-size:0.55rem; letter-spacing:0.25em;
+    color:var(--muted); text-transform:uppercase; margin-bottom:0.8rem;
+  }
+  #page-toc a {
+    display:block; padding:0.32rem 0.6rem 0.32rem 0.9rem;
+    border-left:2px solid var(--border);
+    color:var(--muted); text-decoration:none;
+    font-size:0.78rem; line-height:1.5;
+    transition:color 0.15s, border-color 0.15s;
+  }
+  #page-toc a:hover { color:var(--ink); }
+  #page-toc a.active { color:var(--accent); border-left-color:var(--accent); font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div id="top-bar">
+  <div id="top-bar-inner">
+    <div id="top-title">
+      <span class="zh">D6｜即兴的智慧：随时开始</span>
+      <span class="en">Speak to Write · Day 6</span>
+    </div>
+    <div class="top-nav">
+      <button class="font-btn" type="button" data-font="down">A−</button>
+      <button class="font-btn" type="button" data-font="up">A+</button>
+      <button class="theme-toggle" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="nav-btn" href="stw-05.html">← D5</a>
+      <a class="nav-btn" href="home.html#lessons">目录</a>
+      <a class="nav-btn disabled" href="stw-07.html">DAY 7 →</a>
+    </div>
+  </div>
+</div>
+
+<nav id="page-toc" aria-label="本页目录">
+  <div class="toc-label">On This Page · 本页大纲</div>
+  <a href="#sec-1">随时开始</a>
+  <a href="#sec-2">认识即兴发言的价值</a>
+  <a href="#sec-3">总结</a>
+  <a href="#sec-4">今日开喷指引卡</a>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-hero-inner">
+    <div class="lesson-number">STW · D6 · 7月12日 · 每日引子</div>
+    <h1>即兴的智慧：<br>随时开始</h1>
+    <div class="en-sub">Day 6 · Start Anywhere, Start Now</div>
+    <p class="lead">
+      <em>倘若你一早就能精准预判自己一整天的全部行程，那你活得便失去了几分生气——预判得越是分毫不差，这份鲜活就流失得越多。</em><br><br>
+      ——塔勒布
+    </p>
+  </div>
+</section>
+
+<article class="lesson-content">
+
+  <h2 id="sec-1"><span class="num">01</span>随时开始</h2>
+
+  <blockquote>
+    <p>想到大家都无需等待，是多么美妙的一件事情！我们可以从现在开始，慢慢地改变世界。每个人，不论是伟大或是渺小，都能为了宣扬正义做出贡献。</p>
+    <strong>多么美好，你总是能贡献些什么，即使只是仁慈。</strong>
+    <span class="bq-source">——《安妮日记》</span>
+  </blockquote>
+
+  <p>旧金山专业即兴剧演出团队「三合一」的演员们，在开始表演前会询问观众意见，<strong>然后从一片嘈杂的声音中抓住一两句话，开始即兴表演。</strong>他们懂得一条重要的即兴表演原则：<strong>从哪里开始都行。</strong>他们总是随时随地开始表演。</p>
+
+  <p>面对问题，人们总想理清头绪，搞清楚从哪里开始动手。这样做不仅浪费时间，而且让人觉得困难重重。如果你不知从哪里开始，不如就从最明显的地方开始动手，动手之后，你自然会找到办法解决问题。</p>
+
+  <p>随时开始，鼓励我们随时随地去实现梦想或解决难题。</p>
+
+  <p>几年前，我用这种办法帮助过一位即兴剧学员玛丽。她是两个孩子的母亲，家里的状况简直是一场灾难：没洗的碗碟、散落一地的玩具、未完成的购物清单、没倒的垃圾，以及一堆家务。玛丽的母亲是一位完美主妇，玛丽觉得自己永远比不上母亲，于是愈发觉得沮丧。"我不知从哪里开始"，面对糟糕的局面，她束手无策。</p>
+
+  <p>与她交谈一番后，她的境况依旧没有改善，于是我主动登门拜访（这里用到了第三条原则：即刻现身）。玛丽打开门，焦虑又略带得意地说："我说的没错吧，真的很乱。"</p>
+
+  <p>我穿过走廊，顺手捡起地上的玩具，来到厨房后我告诉她："就从眼前的事开始"，一边将黏糊糊的餐具放入洗碗机。玛丽则开始清理报纸、收拾垃圾、把牛奶放入冰箱。我们一边交谈一边整理，不到 20 分钟，厨房就收拾好了。接着是客厅，然后是房间。大约一小时后，大部分家务都干完了。</p>
+
+  <blockquote>
+    <span class="bq-label">试试看</span>
+    随时开始。挑一个需要完成的工作或任务，放下书，马上动手，想到什么就做什么，做完一件，再接着做下一件。
+  </blockquote>
+
+  <p>这条原则也适用于发言，回答问题或开始一幕即兴场景。<strong>脑子里蹦出的第一个词就是最合适的开始。不要犹豫，只要开口说，你就有了发挥的素材。仿佛是这个想法选择了你，而不是你选择了它。</strong>即兴演员要做的是将一个想法<strong>发展</strong>成为好的创意，而不是苦苦寻找好点子。</p>
+
+  <p><strong>判断的过程、你的喜好、权衡得失，都可能将你的第一个想法扼杀在摇篮里。</strong>就像窗外的那棵树，它不仅是一棵树，它还可能是挡住海景的红杉木，或是一个让人没法集中注意力的讨厌鬼，还会让我想起放任植物乱长的自私邻居。</p>
+
+  <p>我们很擅长放弃第一个想法，理由通常是："无聊"、"没创意"、"不喜欢它"、"太直接"、"有人说过了"、"我怕说了有不好的后果"等等。<strong>不要扼杀你的第一个想法。珍惜它，表达出来，长此以往，就能养成习惯。</strong></p>
+
+  <p><strong>作家往往是在写作过程中才发现自己想表达什么的。发言也一样，一边说一边想你要说什么，然后调整方式，把想法表达出来。</strong>优秀的发言离不开临场发挥。</p>
+
+  <h2 id="sec-2"><span class="num">02</span>认识即兴发言的价值</h2>
+
+  <p>一位圣荷西州立大学商学院的教授在得知我教授学生即兴发言后，说道："即兴发言，听起来可不妙。现如今的学生不愿花时间准备，发言都很鲁莽。所以我一向主张学生准备讲稿，毕竟这不是闲聊。"</p>
+
+  <p>我理解他的担心，但他并不理解即兴发言。即兴发言提倡针对眼前的问题和实际情况组织语言，而不是胡扯；这样的发言有明确的目标，而不是照本宣科。</p>
+
+  <p>根据讲稿发言可能会让你陷入窘境：</p>
+  <ol>
+    <li>你会因为记不住讲稿而支支吾吾（40 年来我见过无数演员为记台词而苦恼）</li>
+    <li>即使背下讲稿，也可能答非所问（想想政治人物用准备好的答案回答无关问题的场面）</li>
+  </ol>
+
+  <p><strong>即兴发言是从混乱中理出头绪，技术性多于艺术性。</strong>这样做是为了更好地切中主题，虽然用词不如精心准备的讲稿考究，<strong>但更具时效性，也更真诚。</strong></p>
+
+  <p>与其事先写讲稿，堆砌华丽的辞藻，不如针对演讲内容列几个问题，写下来，然后试着用自然的方式回答。例如：</p>
+
+  <blockquote>
+    <span class="bq-label">讲稿示例</span>
+    我要感谢威萨普先生邀请我来到扶轮社演讲。先来谈谈我是如何开始教授即兴剧表演的。1979 年，我学习太极拳时，我的太极拳老师黄忠良邀请了基斯·约翰斯通（Keith Johnstone）教授——加拿大的即兴剧老师，一起授课。身为戏剧教师，我对基斯教授的即兴表演理念非常感兴趣。随后，我开始在斯坦福大学的表演课上尝试教授他的游戏及理念。
+  </blockquote>
+
+  <p>换成即兴演讲问题列表：</p>
+  <ol>
+    <li>谁邀请了我？我要感谢谁？</li>
+    <li>谁让我接触到即兴剧？在什么时候？</li>
+    <li>我什么时候开始教即兴剧？</li>
+    <li>为什么即兴表演在斯坦福大学很受欢迎？</li>
+  </ol>
+
+  <p><strong>回答问题</strong>的方式给了发言自由发挥的空间。<strong>发言时针对问题，随时收集、整理有用的信息，发言会更自然。</strong>而背讲稿会把注意力完全限制在文字上，很难再添加有用的细节。</p>
+
+  <p>几十年前，我在维恩州立大学念研究生时，选修了四堂口语表达课。每堂课的教授都在反复说：<strong>开口说，拜托，开口就行。</strong></p>
+
+  <p>如果有哪个学生用华丽的辞藻，或是说话带有朗诵的腔调，教授便会打断他，并友善地提醒：<strong>"不需要这么正式，像平常一样说话就好。"</strong></p>
+
+  <p>做到这点并不容易，因为日常聊天的语调自然而又放松，而持稿发言则全然不是那么回事。只有接受过严格训练的演员，才能做到用自然的语调念台词。<strong>即兴发言的方式是最自然的，你只需要相信自己。</strong></p>
+
+  <blockquote>
+    <span class="bq-label">试试看</span>
+    即兴表演一段简短的独白。一边说一边组织语言，不要犹豫。可以采用以下主题："如果每天有 20 个小时，你会如何度过多出的 4 小时？"或是"谈谈近来你觉得很美的事物。"
+  </blockquote>
+
+  <h2 id="sec-3"><span class="num">03</span>总结：随时开始</h2>
+
+  <ul>
+    <li>从哪里开始都行。</li>
+    <li>先从眼前的事情着手。</li>
+    <li>一旦开始，任何工作都会变容易。</li>
+    <li>不要准备讲稿，改成列出问题。</li>
+    <li>表演更像是与观众交谈，而不是发表演讲。</li>
+    <li>相信自己。</li>
+    <li>一边发言，一边调整和扩充发言内容。</li>
+  </ul>
+
+  <h2 id="sec-4"><span class="num">今日开喷指引卡</span></h2>
+
+  <p>今天想提醒大家一件事：在已经设置好的时间段里录音，当然很好。</p>
+  <p>但平时遇到任何觉得很不错的 idea，也都可以随时拿出手机，立刻录下来。不用等到"该录音的时间"，不用等到"想清楚了再说"。</p>
+  <p><strong>这就是随时开始。</strong>脑子里蹦出的第一个词，就是最合适的开口处。</p>
+
+  <div class="rules-box">
+    <span class="label">Structural Tension · 今日张力</span>
+    目标是：今天开喷 15 分钟。<br>
+    现状是：还没有喷。<br><br>
+    打开录音，就从眼前的事开始——今天最先冒出来的念头是什么？
+  </div>
+
+  <p>说完可以来群里分享：「Day 6 ✅ + 你今天说的第一句话是什么？」</p>
+
+  <div class="sign-off">
+    <p class="by">—— 云不见 · 2026.07.12</p>
+  </div>
+
+</article>
+
+<nav class="lesson-footer-nav">
+  <a class="footer-nav-card" href="stw-05.html">
+    <div class="fn-label">← 上一篇</div>
+    <div class="fn-title">DAY 5｜为什么21天习惯养成法注定会失败</div>
+    <div class="fn-num">STW · D5 · 7月11日</div>
+  </a>
+  <a class="footer-nav-card next disabled" href="stw-07.html">
+    <div class="fn-label">下一篇 →</div>
+    <div class="fn-title">DAY 7｜敬请期待</div>
+    <div class="fn-num">STW · D7 · 7月13日</div>
+  </a>
+</nav>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">说出来的每一句话，都算数。</div>
+    <div class="footer-right">© Speak to Write · by 云不见</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', () => {
+  const total = document.body.scrollHeight - window.innerHeight;
+  document.getElementById('progress').style.width = (window.scrollY / total * 100) + '%';
+});
+
+(function() {
+  const toc = document.getElementById('page-toc');
+  const content = document.querySelector('.lesson-content');
+  const links = Array.from(document.querySelectorAll('#page-toc a[href^="#"]'));
+  const targets = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
+  function spy() {
+    toc.classList.toggle('visible', content.getBoundingClientRect().top <= 160);
+    let idx = -1;
+    for (let i = 0; i < targets.length; i++) {
+      if (targets[i] && targets[i].getBoundingClientRect().top <= 130) idx = i;
+    }
+    links.forEach((a, i) => a.classList.toggle('active', i === idx));
+  }
+  window.addEventListener('scroll', spy, { passive: true });
+  spy();
+})();
+</script>
+<script src="theme.js" defer></script>
+
+</body>
+</html>
