@@ -373,7 +373,7 @@ window.addEventListener('scroll', () => {
   const maxProbe = n;
   const page = d => 'stw-' + String(d).padStart(2, '0') + '.html';
   let cache = {};
-  try { cache = JSON.parse(localStorage.getItem('stw-card-titles') || '{}'); } catch (e) {}
+  try { cache = JSON.parse(localStorage.getItem('stw-card-titles-v2') || '{}'); } catch (e) {}
   const days = [];
   for (let d = 1; d <= maxProbe; d++) {
     if (cache[d]) { days.push({ d: d, title: cache[d] }); continue; }
@@ -387,7 +387,7 @@ window.addEventListener('scroll', () => {
       days.push({ d: d, title: title });
     } catch (e) { break; }
   }
-  try { localStorage.setItem('stw-card-titles', JSON.stringify(cache)); } catch (e) {}
+  try { localStorage.setItem('stw-card-titles-v2', JSON.stringify(cache)); } catch (e) {}
   const grid = document.querySelector('.lesson-grid');
   if (!grid || !days.length) return;
   // 去重按解析后的路径比较（托管平台可能把 stw-01.html 改写成 /stw-01）
