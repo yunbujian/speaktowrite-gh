@@ -210,6 +210,15 @@
   .footer-left { font-size:0.85rem; font-weight:700; color:rgba(245,240,232,0.3); }
   .footer-right { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.15em; color:var(--muted); }
 
+  .lesson-grid.no-top-border { border-top:none; margin-top:0; }
+  .week-divider-bar {
+    border-left:1px solid var(--border); border-right:1px solid var(--border);
+    padding:1rem 1.8rem; display:flex; align-items:center; gap:1.2rem;
+    font-family:var(--mono); font-size:0.58rem; letter-spacing:0.22em;
+    color:var(--muted); text-transform:uppercase;
+  }
+  .week-divider-bar::before, .week-divider-bar::after { content:''; flex:1; height:1px; background:var(--border); }
+
   @media (max-width: 720px) {
     .lesson-grid { grid-template-columns:1fr; }
     .lesson-card { border-right:none; }
@@ -293,7 +302,9 @@
     </a>
 
     <div class="section-eyebrow" style="margin-top:4rem;">Daily · 每日引子 · 每天早上更新</div>
-    <div class="lesson-grid">
+    <div class="lesson-grid" id="week2-grid" style="display:none; border-bottom:none; margin-bottom:0;"></div>
+    <div class="week-divider-bar" id="week1-divider-bar" style="display:none;"><span>第一周 · 最小阻力之路</span></div>
+    <div class="lesson-grid" id="week1-grid">
 
       <a class="lesson-card locked gold">
         <div class="big-num">15</div>
@@ -398,11 +409,15 @@ window.addEventListener('scroll', () => {
     } catch (e) { break; }
   }
   try { localStorage.setItem('stw-card-titles-v2', JSON.stringify(cache)); } catch (e) {}
-  const grid = document.querySelector('.lesson-grid');
-  if (!grid || !days.length) return;
-  // 去重按解析后的路径比较（托管平台可能把 stw-01.html 改写成 /stw-01）
-  const existing = [...grid.querySelectorAll('a[href]')].map(a =>
-    new URL(a.href, location.href).pathname.replace(/\.html$/, ''));
+  const week1Grid = document.getElementById('week1-grid');
+  const week2Grid = document.getElementById('week2-grid');
+  const dividerBar = document.getElementById('week1-divider-bar');
+  if (!week1Grid || !days.length) return;
+  // 去重：同时检查两个 grid（托管平台可能把 stw-01.html 改写成 /stw-01）
+  const existing = [
+    ...week1Grid.querySelectorAll('a[href]'),
+    ...week2Grid.querySelectorAll('a[href]')
+  ].map(a => new URL(a.href, location.href).pathname.replace(/\.html$/, ''));
   const latest = days[days.length - 1].d;
   // 升序逐张 prepend，最终最新的一天排在最前
   days.forEach(item => {
@@ -418,8 +433,15 @@ window.addEventListener('scroll', () => {
       + '<div class="lesson-meta">DAY ' + item.d + ' · ' + (date.getMonth() + 1) + '月' + date.getDate() + '日' + tag + '</div>'
       + '<div class="lesson-title">' + item.title + '</div>'
       + '<div class="lesson-go">阅读 Day ' + item.d + ' →</div>';
-    grid.prepend(a);
+    // Day 1–7 → 第一周 grid；Day 8+ → 第二周 grid
+    (item.d <= 7 ? week1Grid : week2Grid).prepend(a);
   });
+  // 有第二周内容时显示分隔条和 week2-grid
+  if (week2Grid.querySelector('.lesson-card')) {
+    week2Grid.style.display = '';
+    dividerBar.style.display = '';
+    week1Grid.classList.add('no-top-border');
+  }
 })();
 </script>
 <script src="theme.js" defer></script>
