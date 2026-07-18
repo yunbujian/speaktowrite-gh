@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D13 10X愿景之所以简单，在于你不需要比周围所有的人都更勤奋、更聪明 · 口喷写作实践小组</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>(function(){try{var t=localStorage.getItem('stw-theme');if(t!=='dark')document.documentElement.setAttribute('data-theme','light');}catch(e){}})();</script>
+<link rel="stylesheet" href="theme.css">
+<style>
+  :root { --bg:#0e0c09; --bg2:#161410; --bg3:#1e1a14; --ink:#f5f0e8; --accent:#c85a1e; --gold:#b8960c; --muted:#6a6258; --border:rgba(245,240,232,0.08); --serif:'Noto Serif SC',serif; --mono:'Space Mono',monospace; }
+  *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--bg); color:var(--ink); font-family:var(--serif); line-height:1.85; padding-top:52px; }
+  body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E"); }
+  .progress-bar { position:fixed; top:0; left:0; height:2px; background:var(--gold); z-index:1001; transition:width 0.1s; width:0; }
+  #top-bar { position:fixed; top:0; left:0; right:0; height:52px; z-index:1000; display:flex; align-items:center; justify-content:center; background:rgba(14,12,9,0.92); backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+  #top-bar-inner { width:100%; max-width:840px; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+  #top-title { display:flex; flex-direction:column; gap:1px; min-width:0; }
+  #top-title .zh { font-size:0.78rem; font-weight:900; color:var(--ink); letter-spacing:0.04em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #top-title .en { font-family:var(--mono); font-size:0.5rem; letter-spacing:0.18em; color:var(--muted); text-transform:uppercase; }
+  .top-nav { display:flex; gap:0.5rem; flex-shrink:0; align-items:center; }
+  .nav-btn { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.12em; color:var(--muted); text-decoration:none; border:1px solid rgba(245,240,232,0.1); padding:0.35rem 0.7rem; border-radius:3px; transition:all 0.2s; white-space:nowrap; }
+  .nav-btn:hover { color:var(--ink); border-color:rgba(245,240,232,0.3); }
+  .nav-btn.disabled { opacity:0.4; pointer-events:none; }
+  .footer-nav-card.disabled { opacity:0.45; pointer-events:none; }
+  .lesson-hero { padding:6rem 2rem 4rem; border-bottom:1px solid var(--border); position:relative; overflow:hidden; }
+  .lesson-hero-inner { max-width:840px; margin:0 auto; position:relative; z-index:1; }
+  .lesson-hero::after { content:''; position:absolute; inset:0; pointer-events:none; background-image:radial-gradient(1.5px 1.5px at 25% 30%, rgba(184,150,12,0.5) 0%, transparent 100%), radial-gradient(1px 1px at 70% 60%, rgba(184,150,12,0.4) 0%, transparent 100%), radial-gradient(1px 1px at 85% 25%, rgba(245,240,232,0.2) 0%, transparent 100%), radial-gradient(1.2px 1.2px at 45% 80%, rgba(245,240,232,0.25) 0%, transparent 100%); }
+  .lesson-number { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.3em; color:var(--gold); text-transform:uppercase; margin-bottom:1.5rem; display:flex; align-items:center; gap:0.8rem; }
+  .lesson-number::before { content:''; display:block; width:32px; height:1px; background:var(--gold); }
+  .lesson-hero h1 { font-size:clamp(1.8rem,4.5vw,3rem); font-weight:900; line-height:1.2; letter-spacing:-0.01em; margin-bottom:1.2rem; }
+  .lesson-hero .en-sub { font-family:var(--mono); font-size:clamp(0.78rem,1.5vw,0.95rem); font-weight:700; color:var(--muted); letter-spacing:0.08em; margin-bottom:1.6rem; }
+  .lesson-hero .lead { font-size:1.05rem; color:rgba(245,240,232,0.6); font-weight:300; line-height:1.95; max-width:580px; }
+  .lesson-hero .lead strong { color:var(--ink); font-weight:700; }
+  .lesson-content { max-width:720px; margin:0 auto; padding:4rem 2rem; }
+  .lesson-content p { font-size:1rem; color:rgba(245,240,232,0.78); font-weight:300; line-height:1.95; margin-bottom:1.3rem; }
+  .lesson-content p strong { color:var(--ink); font-weight:700; }
+  .lesson-content p em { color:var(--gold); font-style:italic; }
+  .lesson-content h2 { font-size:1.7rem; font-weight:900; line-height:1.25; margin:3.5rem 0 1.5rem; padding-top:2rem; border-top:1px solid var(--border); scroll-margin-top:70px; }
+  .lesson-content h3 { scroll-margin-top:70px; font-size:1.1rem; font-weight:900; line-height:1.35; margin:2.4rem 0 1rem; color:var(--ink); padding-left:0.8rem; border-left:3px solid var(--accent); }
+  .lesson-content h2 .num { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.2em; color:var(--gold); display:block; margin-bottom:0.6rem; font-weight:700; text-transform:uppercase; }
+  .lesson-content ul, .lesson-content ol { margin:0 0 1.3rem 1.4rem; }
+  .lesson-content li { font-size:1rem; color:rgba(245,240,232,0.78); font-weight:300; line-height:1.95; margin-bottom:0.5rem; }
+  .lesson-content li strong { color:var(--ink); font-weight:700; }
+  .lesson-content blockquote { margin:1.8rem 0; padding:1.2rem 1.5rem; border-left:3px solid var(--gold); background:rgba(184,150,12,0.05); font-size:0.95rem; color:rgba(245,240,232,0.7); font-weight:300; line-height:1.95; }
+  .lesson-content blockquote strong { color:var(--ink); font-weight:700; }
+  .lesson-content blockquote p { margin-bottom:0.8rem; font-size:0.95rem; color:rgba(245,240,232,0.7); }
+  .lesson-content blockquote p:last-child { margin-bottom:0; }
+  .lesson-content blockquote .cite { display:block; margin-top:1rem; font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; color:var(--muted); }
+  .rules-box { padding:1.6rem 1.8rem; border:2px solid var(--gold); background:rgba(184,150,12,0.05); margin:2rem 0; font-family:var(--serif); font-size:1rem; font-weight:400; color:rgba(245,240,232,0.85); line-height:1.9; }
+  .rules-box .label { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.25em; color:var(--gold); margin-bottom:0.8rem; text-transform:uppercase; display:block; font-weight:700; }
+  .rules-box p { font-size:0.95rem; color:rgba(245,240,232,0.85); margin-bottom:0.8rem; }
+  .rules-box p:last-child { margin-bottom:0; }
+  .rules-box ol { margin:0.5rem 0 0 1.3rem; }
+  .rules-box li { margin-bottom:0.6rem; font-size:0.95rem; }
+  .sign-off { margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border); }
+  .sign-off .by { font-family:var(--mono); font-size:0.65rem; letter-spacing:0.15em; color:var(--muted); }
+  .lesson-footer-nav { max-width:840px; margin:0 auto; padding:3rem 2rem; border-top:1px solid var(--border); display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+  .footer-nav-card { padding:1.5rem 1.4rem; border:1px solid var(--border); text-decoration:none; color:inherit; transition:background 0.2s; }
+  .footer-nav-card:hover { background:rgba(245,240,232,0.03); }
+  .footer-nav-card.next { text-align:right; }
+  .fn-label { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.2em; color:var(--muted); margin-bottom:0.5rem; }
+  .fn-title { font-size:0.95rem; font-weight:900; color:var(--ink); line-height:1.35; }
+  .fn-num { font-family:var(--mono); font-size:0.6rem; letter-spacing:0.1em; color:var(--gold); margin-top:0.4rem; }
+  .footer { padding:2.5rem 2rem; background:var(--bg); display:flex; justify-content:center; border-top:1px solid var(--border); }
+  .footer-inner { max-width:840px; width:100%; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; }
+  .footer-left { font-size:0.82rem; font-weight:700; color:rgba(245,240,232,0.3); }
+  .footer-right { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.15em; color:var(--muted); }
+  @media (max-width:640px) { #top-title { display:none; } #top-bar-inner { justify-content:flex-end; } .lesson-hero h1 { font-size:1.6rem; } .lesson-content { padding:3rem 1.4rem; } .lesson-footer-nav { grid-template-columns:1fr; padding:2rem 1.4rem; } .footer-nav-card.next { text-align:left; } }
+
+  /* ── Page TOC ── */
+  @media (min-width: 1240px) {
+    #page-toc { position:fixed; z-index:500; top:110px; left:calc(50% - 610px); width:210px; max-height:calc(100vh - 170px); overflow-y:auto; scrollbar-width:thin; opacity:0; pointer-events:none; transform:translateY(8px); transition:opacity 0.35s ease, transform 0.35s ease; }
+    #page-toc.visible { opacity:1; pointer-events:auto; transform:translateY(0); }
+  }
+  @media (max-width: 1239.98px) {
+    #page-toc { position:fixed; z-index:950; top:0; bottom:0; left:-300px; width:272px; padding:4.5rem 1.3rem 2.5rem; background:var(--bg); border-right:1px solid var(--border); overflow-y:auto; scrollbar-width:thin; transition:left 0.28s ease; }
+    #page-toc.open { left:0; box-shadow:6px 0 28px rgba(0,0,0,0.35); }
+  }
+  #page-toc .toc-label { font-family:var(--mono); font-size:0.55rem; letter-spacing:0.25em; color:var(--muted); text-transform:uppercase; margin-bottom:0.8rem; }
+  #page-toc a { display:block; padding:0.32rem 0.6rem 0.32rem 0.9rem; border-left:2px solid var(--border); color:var(--muted); text-decoration:none; font-size:0.78rem; line-height:1.5; transition:color 0.15s, border-color 0.15s; }
+  #page-toc a:hover { color:var(--ink); }
+  #page-toc a.active { color:var(--accent); border-left-color:var(--accent); font-weight:700; }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progress"></div>
+
+<div id="top-bar">
+  <div id="top-bar-inner">
+    <div id="top-title">
+      <span class="zh">D13｜10X愿景之所以简单，在于你不需要比周围所有的人都更勤奋、更聪明。变成一个专注而积极的人，效率的提升是顺其自然的。</span>
+      <span class="en">Speak to Write · Day 13</span>
+    </div>
+    <div class="top-nav">
+      <button class="font-btn" type="button" data-font="down">A−</button>
+      <button class="font-btn" type="button" data-font="up">A+</button>
+      <button class="theme-toggle" type="button">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+      <a class="nav-btn" href="stw-12.html">← D12</a>
+      <a class="nav-btn" href="home.html#lessons">目录</a>
+      <a class="nav-btn disabled">DAY 14 →</a>
+    </div>
+  </div>
+</div>
+
+<nav id="page-toc" aria-label="本页目录">
+  <div class="toc-label">On This Page · 本页大纲</div>
+  <a href="#sec-1">10 倍愿景到底是什么？</a>
+  <a href="#sec-2">十倍愿景是为了让你不得不去做舍弃</a>
+  <a href="#sec-3">单纯的量变不能直接引起质变</a>
+  <a href="#sec-4">回顾过去，你早已实现了诸多的 10 倍变革</a>
+  <a href="#sec-5">今日指引</a>
+</nav>
+
+<section class="lesson-hero">
+  <div class="lesson-hero-inner">
+    <div class="lesson-number">STW · D13 · 7月19日 · 每日引子</div>
+    <h1>10X 愿景之所以简单，在于你不需要比周围所有的人都更勤奋、更聪明。变成一个专注而积极的人，效率的提升是顺其自然的。</h1>
+    <div class="en-sub">Day 13 · What Is 10X Vision · You've Already Done It</div>
+    <p class="lead">
+      昨天我们聊了收益与差距模型，以及进步本不是打卡。今天来彻底弄清楚：<strong>10X 愿景到底是什么？你早已实现了诸多的 10 倍变革，只是忘记了。</strong>
+    </p>
+  </div>
+</section>
+
+<article class="lesson-content">
+
+  <blockquote>
+    <p>如果目标是实现 10 倍增长，</p>
+    <p>那么，这个过程通常并不会比 10% 的增长难上 100 倍，</p>
+    <p>回报却可能是 10% 增长的 100 倍。</p>
+    <p>有时，追求更大规模的增长反而更简单，</p>
+    <p><strong>因为比起你需要比周围所有人都更聪明，</strong><br><strong>转变观念的成本更低。</strong></p>
+    <span class="cite">——阿斯特罗·特勒（Astro Teller）博士<br>谷歌"登月计划"项目负责人，X 实验室首席执行官</span>
+  </blockquote>
+
+  <p>看到群友们说：并不清楚自己能有什么 10 倍的愿景。</p>
+
+  <p>其实是我们把自己的思维给限制住了，总觉得要像爱因斯坦、米开朗琪罗一样，成为世界级别的大师，才算 10 倍的飞跃。</p>
+
+  <p>不是的。</p>
+
+  <p>实际上，那只是他们人生中的某一个 10 倍飞跃，甚至是人生非常后期，被人传颂的成功飞跃。</p>
+
+  <p>并不代表他们人生的全部，<strong>而恰恰是那些被世人忽略的、他们初出茅庐时的飞跃更为重要。</strong></p>
+
+  <h2 id="sec-1"><span class="num">01</span>10 倍愿景到底是什么？</h2>
+
+  <p>只是通过展望未来、设定自己的 10 倍愿景时，会觉得很抽象，不知道到底在说什么，包括我自己。</p>
+
+  <p>我们会觉得：</p>
+
+  <ol>
+    <li>10 倍愿景听上去过于遥远；</li>
+    <li>不知道什么样的目标才算得上是 10 倍愿景。</li>
+  </ol>
+
+  <p>于是卡在此处，无法前进。</p>
+
+  <p>不要被一个概念的表面所蒙蔽了双眼。</p>
+
+  <p>绕过语言，去看看它的内核，<strong>它到底在说什么？</strong></p>
+
+  <p>10 倍愿景不是为了筛选你的目标有多宏大，而是为了筛选 10 倍的这个标准能不能剔除 80% 那些不重要的事项，<strong>而只留下 20% 真正影响你目标的事项。</strong></p>
+
+  <p><strong>重要的是这个筛选，而不是它听起来有多么的宏大。</strong></p>
+
+  <p>你无法和任何人去比较你的 10 倍愿景够不够格，<strong>你只能和过去的自己对比。</strong></p>
+
+  <p>对于一个从来都没有学过英语的人，想要学好英语，绝对是个 10 倍的愿景；而对于专八英语生来说，这只是小菜一碟。</p>
+
+  <p>真正要筛选的是，当你设立了一个学英语的目标，<strong>你就要去思考哪 20% 的时间更能实现你的目标，而不是花更多的时间。</strong></p>
+
+  <p>如果你的目标是"我既然要学英语，那要背单词，又要抓阅读，还要写作，还要把口语说好"，按照之前的惯性思维，你可能会每天花一个小时搞定口语，花一个小时背单词，花一个小时练阅读，再花一个小时学写作，可能还要再花一个小时去做试卷，那你恨不得一天花上 8 到 10 个小时。</p>
+
+  <p>而真正的"十倍愿景"给你带来的变革在于：<strong>如何能够从一开始需要花 8 个小时实现目标，砍到只需要花 2 个小时就能够实现同样的目标？</strong></p>
+
+  <p>如果你追求的是线性的 2 倍成长，你并没有改变自己学习方法的意愿；<strong>而 10 倍速增长，你就不得不彻底转变自己的学习方式。</strong></p>
+
+  <p>10 倍的意思是，<strong>以前的思维不奏效了。</strong></p>
+
+  <p>你会去检索、去分析什么样的学习方式是高效的。可能你会找到一种方法，比如只需要花费 2 小时的"精读加跟读"这样最简单的方式，竟然能够同时把背单词、阅读、口语这几项都训练到位。</p>
+
+  <p>这才是"十倍愿景"的真正含义：抛弃曾经的做法和旧范式，去迈向新的、创新型的做事方式。</p>
+
+  <p><strong>我们不再追求多努力、多勤奋，而是追求只做那 20% 最重要的事情。</strong></p>
+
+  <p>由此，采用"10 倍速增长"的说法，会更加贴切。</p>
+
+  <p>10 倍增长的目标意味着筛选出那重要的 20%：</p>
+
+  <ol>
+    <li>最少必要知识是什么？</li>
+    <li>最少必要行动是什么？</li>
+  </ol>
+
+  <p>我们不是说要实现多么伟大的目标，<strong>我们是想通过做得更少，来更高效地实现同等的目标。</strong></p>
+
+  <p>对于一个目标，我们惯性思维往往是做得越多越好，一天恨不得做 8 到 10 个小时，这就会导致一种"时间蔓延"的现象，你的效率反而会降低。</p>
+
+  <p>如果你精准地筛选，只花 1 到 2 个小时就能达到 8 个小时的效果，这就像是一把砍刀，<strong>它自然而然地就砍去了那些对你的目标没有效益的活动，留下更多的空闲时间去休息。</strong></p>
+
+  <h2 id="sec-2"><span class="num">02</span>十倍愿景不是为了要难倒你，而是为了让你不得不去做舍弃</h2>
+
+  <p>进入心流状态更能产生高绩效。</p>
+
+  <p>而心流的三大基本要求是：1、明确具体的目标；2、及时的反馈；3、以及超出水平的挑战，三者缺一不可。</p>
+
+  <p>你自己感受一下，那些我们时间蔓延的时刻：一天花个 8 小时、10 小时，却一直处于低效状态的时刻，是不是往往有以下的原因之一：</p>
+
+  <ol>
+    <li><strong>没有明确具体的目标：</strong>只是想着"我今天就读会书"，或者"我今天可能会写篇文章"，但具体也不知道要写个啥。</li>
+    <li><strong>没有及时的反馈：</strong>读得怎么样、读得好不好、写得如何、有没有发表、有没有其他人给你反馈、有没有自己给自己反馈，这些带来的效果是完全不一样的。</li>
+    <li><strong>缺乏超出水平的挑战：</strong>没有挑战，就没有专注的理由；没有专注，心流的大门就不会开启。超出水平的挑战点燃了全力以赴的紧迫感，从而将我们推入心流状态。</li>
+  </ol>
+
+  <p>由此，心流产生的高绩效是自然而然的事情。</p>
+
+  <h2 id="sec-3"><span class="num">03</span>单纯的量变不能直接引起质变</h2>
+
+  <p>10 倍是追求质的。</p>
+
+  <p>安德斯·艾利克森（"刻意练习"理论的提出者）明确指出：单纯重复某件事的次数（量），如果没有即时反馈和刻意校正，能力会在早期快速提升后迅速<strong>平台化</strong>——一个打了 20 年业余高尔夫、从没请过教练的人，技术水平往往和打了 5 年的人差不多。</p>
+
+  <p>认识的人越来越多（人脉数量的量变），但如果都是泛泛之交，真正能提供支持的深度关系（质）并不会随之增加，反而可能因为精力被摊薄而下降。</p>
+
+  <p>更极端的情况，<strong>量越过某个点甚至会反噬质的生存。</strong></p>
+
+  <p>公司人数、部门数量持续增加，过了某个规模后，官僚层级增多、决策变慢，创新力反而下降。这条曲线根本不是单调上升的——它在某处掉头向下。</p>
+
+  <p>烧水从 20℃ 加到 99℃，全是量变吧；但如果热量散失速度和加热速度相当，系统会在某个远低于 100℃ 的温度达到平衡，永远到不了沸点：<strong>量必须净积累、集中在同一处。</strong></p>
+
+  <p>如果你把精力分散在 80% 的日常事务上，就相当于一边加热一边散热，无论加多少量，都到不了让质变发生的阈值；</p>
+
+  <p><strong>只有先把 80% 砍掉（相当于先堵住散热），剩下的 20% 才有可能真正积累到临界点。</strong></p>
+
+  <p>质变即意味着，<strong>现在与过去相比已经截然不同，你的身份彻底地转变，旧经验不奏效了。</strong></p>
+
+  <p>10X 愿景不是，现在你能一年读 10 本书，10 倍目标就是 100 本书。10 倍愿景不是，现在你能赚 10 万一年，10 倍目标就是 100 万。</p>
+
+  <p>这些依旧在定量里打转。</p>
+
+  <p>可以设置这样的量化目标，但无需过于依赖量化，觉得没有达到那个目标数字，就失败了。</p>
+
+  <p>真正落到实际的行动，是：<strong>你到底要剔除哪些 80% 对你的结果无意义的积累。</strong></p>
+
+  <p>就像是引发思维的变革，无法从阅读 100 本书中积累，<strong>而更可能从深入思考和阐述清楚 100 个问题中诞生。</strong></p>
+
+  <p>想要引起财富上的变革，无法通过阅读 100 本书实现，<strong>更可能从研究其他人是如何致富的案例和实践中诞生。</strong></p>
+
+  <p>我们企图通过量变来引起质变，但往往更多时候，<strong>逃避难而正确的事情，企图绕着弯子，就是不走那条简单而正确的道路。</strong></p>
+
+  <p>量变的是 a，或许能够带来质变 A。而绝不可能带来质变 B。</p>
+
+  <p><strong>把你带到今天的你，无法用同样的方法把你带到一个不一样的明天。</strong></p>
+
+  <p>如果你还在做去年一样的事情，未来就是现在的延续状态，而不是变革状态。</p>
+
+  <p>真实的进步，这才是重点。不是成功、不是打卡，是进步。（昨天我们讲过的进步本、收益和差距概念）</p>
+
+  <h2 id="sec-4"><span class="num">04</span>回顾过去，你早已实现了诸多的 10 倍变革</h2>
+
+  <p>你或许忘记了。</p>
+
+  <p>诚然，你早已跨越过了无数个 10 倍变革时刻。</p>
+
+  <p>通过回顾过去的 10 倍变革，建立信心，告诉你自己，未来你依旧可以获得下一个 10 倍变革。</p>
+
+  <p>过去有哪些 10 倍变革呢？</p>
+
+  <ul>
+    <li>从不会走路到学会走路</li>
+    <li>从不会说话到会说普通话和方言</li>
+    <li>从不识字到能够听说读写</li>
+    <li>开始学会如何交到新的朋友</li>
+    <li>从不会开车，到学会开车</li>
+    <li>考上大学</li>
+    <li>继续进修</li>
+    <li>找到第一份工作</li>
+    <li>……</li>
+  </ul>
+
+  <p>每当你决心去做超出原有水平的事，并通过这份决心实现自我蜕变时，你的能力就会提升 10 倍。</p>
+
+  <p>虽然这些 10 倍时刻或许是他人强加给你的，并不是你选择的。你只是按照社会的轨道，前进。</p>
+
+  <p>如今我们想要的真正的自由是，选择我想要过的人生。</p>
+
+  <p>我自己选择我渴望的 10 倍增长。</p>
+
+  <p>这就是 Day 10，为什么我们要说：设立自己渴望的目标，并给予承诺，才可能生长出最小阻力之路。</p>
+
+  <p>学会走路，学会说话，考上大学，严格来说，都不是自己的选择。</p>
+
+  <p>而幸福，更可能来自于，<strong>这条路，是我选的。</strong></p>
+
+  <p>哪怕最后没有走到终点，过程便已然获得了幸福。</p>
+
+  <p>这是一场，<strong>对自己的诚实之路，你到底想要成为什么样的人？</strong></p>
+
+  <p>你对这件事是否真实的渴望：<strong>简化你的生活，成倍的提升你的进步、成长与满足感。</strong></p>
+
+  <p>不是所有人都愿意走上这条道路。</p>
+
+  <p>这是一次业余人士和专业人士的跨越。</p>
+
+  <p>每年读 50 本书，比每年读 20 本书更容易。每天做一件事，比隔三差五做，更容易。</p>
+
+  <p>习惯省去了低级的判断和选择，无需让你再纠结：做还是不做，只是去做就行了。</p>
+
+  <p>这一切依旧是最小阻力之路，持续做的惯性会让你持续做，断更的惯性会让你一直断。</p>
+
+  <p>每次转换习惯都需要额外做功、费能量做选择和判断。</p>
+
+  <p>追求 10 倍也可以是一年只读 10 本最重要的书，反反复复地读，排除 80% 不必要读的内容。知识爆炸的烦恼自然就烦不到你了。</p>
+
+  <p>换句话说，目标本身是不是 10 倍，根本不重要，而是，<strong>它能不能帮你筛选出，最重要的 20% 事项，你是如何执行的？有没有反馈机制？</strong></p>
+
+  <p>改变从来不是量变带来的，而是高质量（错误、实验）的反馈带来的。</p>
+
+  <p>回顾过去，不是为了让我们停留在过去的成绩中。</p>
+
+  <p>还记得昨天的收益和差距模型吗？</p>
+
+  <p>回顾过去，目的是建立自信，<strong>如果你过去做到过，那么你现在依旧也能做到。</strong></p>
+
+  <p>有个表情包，大意是：小时候摔跤了，站起来继续走；大人摔跤了，还要在原地先打自己一个巴掌，骂自己是笨蛋。</p>
+
+  <p>虽然是为了好玩，但是各中心酸，经历过的人，就会懂得。</p>
+
+  <p>试想，如果不会走路的小孩，有了这样的大人评判意识，害怕摔倒，害怕被评判，为了避免犯错，学习走路之前，每天练习 8 小时爬行，看似很努力，但要学会走路，简直是难于上青天。</p>
+
+  <p>小时候幸运的是，我们身边有已经会走路的人（也就是我们的爸妈亲人），鼓励我们勇敢的走路。</p>
+
+  <p>身边有已经会说中文的人，鼓励我们勇敢的说话。（据说中文是最难的语言，想必对于中国人来说，这么难的语言都学会了，便没有学不会的东西了）</p>
+
+  <p><strong>最大的阻碍，或许只有我们自己了。</strong></p>
+
+  <p><strong>我们只是需要找回那个，敢于摔跤，敢于站起来的小时候的自己。</strong></p>
+
+  <p>如果你渴望成为一个健康的人，抽烟喝酒就不符合 10 倍的目标，那些习惯属于不重要的 80%，于是需要勇气去戒掉。</p>
+
+  <p>如果只是追求 2 倍增长，就不用抛弃任何事情，不用戒烟和戒酒，只是多运动，多吃健康食物就行了，他们的大脑里会觉得，这一切都会抵消。</p>
+
+  <p>如果你渴望成为一个内心宁静，不被信息的洪流冲垮的人，无目的地频繁刷信息流，那些习惯就属于不重要的 80%，需要承诺于勇气去戒掉它们。</p>
+
+  <p>如果你渴望成为一个不忙于琐事的独立自由职业者，需要频繁地给用户答疑和互动，就属于不重要的 80%，于是需要勇气去死磕真正高质量的内容与自己的成长，给用户带来真正的内在生长出来的能量，而不是浮于表面的心理安慰。</p>
+
+  <p>哪怕那件事情，给你带来大部分的收益，但不满足于目标，就需要舍弃。</p>
+
+  <p>以上均属于 10 倍速的增长，因为这带来质变，前后对比，你成为了完全不一样的人。</p>
+
+  <div class="sign-off">
+    <p class="by">—— 云不见 · 2026.07.19</p>
+  </div>
+
+  <h2 id="sec-5"><span class="num">05</span>今日指引</h2>
+
+  <div class="rules-box">
+    <span class="label">今日指引 · 聚焦过去的收获，展望未来的差异</span>
+    <p>今天先聚焦过去的收获。</p>
+    <ol>
+      <li>找出你曾经的 5 次 10 倍增长经历。</li>
+      <li>给你的每一次 10 倍飞跃给予一个名称和时间轴。比如我的可以这样命名：考上大学（2016-2020）、考上 211 研究生（2020-2023）、进入大厂实习国企工作（2022-2025）、找到了公众号写手的兼职（2025）、公众号读者破万（2022-2025）、正式开始自由职业，探索一人商业道路（2026）……</li>
+      <li>明确弄清楚你每次十倍飞跃中所保留的 20% 事项是什么，以及在每个阶段舍弃的 80% 又是什么。</li>
+      <li>在思考自己每次"十倍飞跃"中所占的 20% 时，然后反思这部分内容究竟是如何助力你进一步培养自己的独特能力的。</li>
+    </ol>
+  </div>
+
+</article>
+
+<nav class="lesson-footer-nav">
+  <a class="footer-nav-card" href="stw-12.html">
+    <div class="fn-label">← 上一篇</div>
+    <div class="fn-title">将表面的损失转化为实际的收益，这种心理是如何转变的呢？</div>
+    <div class="fn-num">STW · D12 · 7月18日</div>
+  </a>
+  <a class="footer-nav-card next disabled">
+    <div class="fn-label">下一篇 →</div>
+    <div class="fn-title">明日更新</div>
+    <div class="fn-num">STW · D14 · 7月20日</div>
+  </a>
+</nav>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <span class="footer-left">口喷写作实践小组</span>
+    <span class="footer-right">STW · DAY 13 · 2026</span>
+  </div>
+</footer>
+
+<script src="theme.js"></script>
+<script>
+(function(){
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', function(){
+    const h = document.documentElement;
+    const pct = h.scrollTop / (h.scrollHeight - h.clientHeight) * 100;
+    bar.style.width = Math.min(pct,100) + '%';
+  }, {passive:true});
+})();
+
+(function(){
+  const toc = document.getElementById('page-toc');
+  if (!toc) return;
+  const links = toc.querySelectorAll('a[href^="#"]');
+  const headings = Array.from(links).map(l => document.querySelector(l.getAttribute('href'))).filter(Boolean);
+
+  const isMobile = () => window.innerWidth < 1240;
+
+  window.addEventListener('scroll', function(){
+    if (!isMobile()) {
+      toc.classList.toggle('visible', window.scrollY > 200);
+    }
+  }, {passive:true});
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const active = toc.querySelector('a[href="#'+e.target.id+'"]');
+        if (active) active.classList.add('active');
+      }
+    });
+  }, {rootMargin:'-15% 0px -75% 0px'});
+  headings.forEach(h => io.observe(h));
+
+  window.toggleToc = function(){
+    toc.classList.toggle('open');
+  };
+  toc.addEventListener('click', function(e){
+    if (isMobile() && e.target.tagName === 'A') toc.classList.remove('open');
+  });
+})();
+</script>
+</body>
+</html>
