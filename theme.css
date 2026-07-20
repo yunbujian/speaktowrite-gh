@@ -111,6 +111,15 @@ html[data-theme="light"] .action-block p { color: rgba(26,21,16,0.82); }
 /* SIGN OFF */
 html[data-theme="light"] .sign-off { border-top-color: var(--border); }
 
+/* PS / Q&A BOX */
+html[data-theme="light"] .ps-box {
+  background: rgba(255,253,247,0.72);
+  border-color: var(--border);
+  color: rgba(26,21,16,0.82);
+}
+html[data-theme="light"] .ps-box strong { color: var(--ink); }
+html[data-theme="light"] .ps-box .ps-label { color: rgba(26,21,16,0.58); }
+
 /* FOOTER */
 html[data-theme="light"] .footer { background: var(--bg); border-top-color: var(--border); }
 html[data-theme="light"] .footer-left { color: rgba(26,21,16,0.55); }
